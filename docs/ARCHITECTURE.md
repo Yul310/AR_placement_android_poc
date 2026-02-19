@@ -206,6 +206,13 @@ private fun collectSample(...) {
 
 ## Virtual Placement
 
+### Box Appearance
+
+The 3D product box features:
+- Semi-transparent blue fill (30% opacity) for volume visualization
+- White wireframe edges (12 edges) for better shape definition
+- Dimensions match actual product size in meters
+
 ### Placement Rules
 
 Products have placement restrictions based on their category:
@@ -231,8 +238,7 @@ fun handleTap(screenX: Float, screenY: Float) {
 
 ### Gestures
 
-- **Tap** — Place or reposition product box
-- **Pan/Drag** — Move product along surface
+- **Tap** — Place product box (first tap) or move to new position (subsequent taps)
 - **Rotation Buttons** — 45° left/right rotation
 
 ---
