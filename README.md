@@ -6,7 +6,7 @@ AR-based measurement app to determine if furniture/appliances will fit through d
 
 - **Door Measurement** - 3-tap corner-based measurement (bottom-left, bottom-right, top-left)
 - **Space Measurement** - 6-tap measurement for rooms/alcoves (walls, floor, ceiling)
-- **Virtual Placement** - Place a 3D product box to visualize size in real space (TVs on walls, appliances floor-only)
+- **Virtual Placement** - Place a 3D product box with wireframe edges to visualize size (TVs on walls, appliances floor-only)
 - **Auto-Smoothing** - 0.75s sampling with median filtering for accurate measurements
 - **Plane-First Gating** - Floor measurements require detected plane (not estimated surfaces)
 - **Y-Consistency Check** - Validates bottom corners are at same height (±3cm)
