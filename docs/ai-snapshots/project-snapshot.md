@@ -9,6 +9,8 @@
 - **Offers three measurement modes**: measure a door opening, measure a room/alcove space, or place a virtual 3D box to visualize the product
 - **Provides confidence ratings** (High/Medium/Low) so you know how reliable the measurement is
 - **Accounts for safety margins** - adds a few centimeters of buffer to avoid tight fits
+- **Validates measurement quality** - requires detected planes for floor points, checks Y-consistency between bottom corners
+- **Monitors tracking state** - aborts sampling if AR tracking is lost during measurement
 
 **Who uses it**: Anyone moving furniture, buying large appliances, or checking if items will fit through doorways or into specific spaces.
 
@@ -108,6 +110,36 @@
     - Applies 3cm safety margin + measurement uncertainty
     - Returns: `Verdict.Pass`, `Verdict.Fail`, or `Verdict.NotSure`
 14. **ResultScreen** displays verdict with color-coded icon and detailed measurements
+
+## Accuracy Safeguards
+
+The app implements several safeguards to ensure measurement accuracy:
+
+### Plane-First Gating
+- Floor measurements (door bottom corners, space floor) **require** hitting a detected plane
+- If user taps before a floor plane is detected, sampling fails with "No floor plane detected" message
+- Prevents inaccurate measurements from estimated surfaces
+
+### Y-Consistency Check
+- After capturing both door bottom corners, validates they are at the same height
+- If Y-difference exceeds 3cm, measurement is rejected
+- User must re-tap both corners on a flat floor
+
+### Tracking State Monitoring
+- During 0.75s sampling, monitors ARCore tracking state each frame
+- If tracking is lost for 10+ consecutive frames, sampling aborts
+- Prevents drift from corrupting measurements
+
+### Conservative Confidence Scoring
+- Pass confidence threshold raised from 0.6 to **0.7**
+- If measurement used only estimated surfaces (no real plane detected), returns "NOT SURE" regardless of confidence
+- Better to say "NOT SURE" than give a false positive
+
+### Virtual Placement Rules
+| Product Type | Wall Placement | Floor Placement |
+|--------------|----------------|-----------------|
+| TV (`canMountOnWall: true`) | ✅ Allowed | ✅ Allowed |
+| Appliances (refrigerator, washer, etc.) | ❌ Rejected | ✅ Allowed |
 
 ## Key folders/files (entry points)
 
