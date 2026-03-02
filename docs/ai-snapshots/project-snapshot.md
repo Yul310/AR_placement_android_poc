@@ -5,6 +5,7 @@
 - **Helps you check if furniture or appliances will fit** through a doorway or into a room before you buy or move them
 - **Uses your phone's camera with AR** (Augmented Reality - technology that overlays digital information onto the real world through your camera) to measure real spaces
 - **Shows a clear verdict**: "WILL FIT", "WON'T FIT", or "NOT SURE" based on your measurements
+- **3D box with wireframe edges** for better visibility in virtual placement mode
 - **Includes pre-loaded products** like refrigerators, sofas, TVs, washers, and beds with their exact dimensions
 - **Offers three measurement modes**: measure a door opening, measure a room/alcove space, or place a virtual 3D box to visualize the product
 - **Provides confidence ratings** (High/Medium/Low) so you know how reliable the measurement is
